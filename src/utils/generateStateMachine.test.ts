@@ -13,15 +13,8 @@ const StepConfig = {
     },
     [NavigationSteps.SECOND_STEP]: {
       back: NavigationSteps.INITIAL_STEP,
-      next: NavigationSteps.SUCCESS_STEP,
+      next: NavigationSteps.FINISH,
       close: NavigationSteps.QUIT_CONFIRMATION_STEP,
-    },
-    [NavigationSteps.SUCCESS_STEP]: {
-      next: NavigationSteps.FINISH,
-      close: NavigationSteps.FINISH,
-    },
-    [NavigationSteps.QUIT_CONFIRMATION_STEP]: {
-      next: NavigationSteps.FINISH,
     },
   },
 };

@@ -31,13 +31,14 @@ export const generateStateMachine = (stepConfig) => {
     states[NavigationSteps.QUIT_CONFIRMATION_STEP] = {
       on: {
         next: NavigationSteps.FINISH,
-        cancel: [
-          {
-            target: (context) =>
-              context.previousStep || NavigationSteps.INITIAL_STEP, // Default to INITIAL_STEP if no previousStep
-            guard: ({ context }) => !!context.previousStep, // Ensure there's a previous step before redirecting
-          },
-        ],
+        cancel: Object.entries(navigation).map(([step, _]) => {
+          return {
+            target: step,
+            guard: ({ context }) => {
+              return context.previousStep === step;
+            },
+          };
+        }),
       },
     };
 
