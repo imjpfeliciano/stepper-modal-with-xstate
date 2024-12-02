@@ -13,15 +13,15 @@ const StepOne: React.FC<StepOneProps> = ({ actor }) => {
   console.log({ actor });
   return (
     <div className="flex flex-col gap-2 items-center justify-center border w-full p-4 rounded">
-      <Header currentStep={1} totalSteps={3} />
+      <Header
+        currentStep={1}
+        totalSteps={3}
+        onClose={() => {
+          handleClick("close");
+        }}
+      />
       <p>Step 1</p>
       <div className="flex flex-row gap-2">
-        <button
-          className="p-2 border rounded hover:bg-gray-100"
-          onClick={() => handleClick("close")}
-        >
-          cancel
-        </button>
         <button
           className="p-2 border rounded hover:bg-gray-100"
           onClick={() => handleClick("next")}

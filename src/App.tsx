@@ -5,8 +5,29 @@ import ConfirmationState from "./components/steps/confirmation";
 import StepOne from "./components/steps/step_one";
 import StepTwo from "./components/steps/step_two";
 import SuccessState from "./components/steps/success_state";
-import { StepConfig, NavigationSteps } from "./constants/navigationConfig";
-// import React from "react";
+import { NavigationSteps } from "./constants/navigationConfig";
+
+const StepConfig = {
+  initial: NavigationSteps.INITIAL_STEP,
+  navigation: {
+    [NavigationSteps.INITIAL_STEP]: {
+      next: NavigationSteps.SECOND_STEP,
+      close: NavigationSteps.QUIT_CONFIRMATION_STEP,
+    },
+    [NavigationSteps.SECOND_STEP]: {
+      back: NavigationSteps.INITIAL_STEP,
+      next: NavigationSteps.SUCCESS_STEP,
+      close: NavigationSteps.QUIT_CONFIRMATION_STEP,
+    },
+    [NavigationSteps.SUCCESS_STEP]: {
+      next: NavigationSteps.FINISH, // Got it button
+      close: NavigationSteps.FINISH, // Close button
+    },
+    [NavigationSteps.QUIT_CONFIRMATION_STEP]: {
+      next: NavigationSteps.FINISH, // Yes button
+    },
+  },
+};
 
 const stepMap = {
   [NavigationSteps.INITIAL_STEP]: (props) => <StepOne {...props} />,

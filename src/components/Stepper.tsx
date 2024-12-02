@@ -2,6 +2,8 @@
 import { stepperMachine } from "../utils/mockMachine";
 import { createActor } from "xstate";
 import { useSelector } from "@xstate/react";
+import { generateStateMachine } from "../utils/generateStateMachine";
+import { MockConfig } from "../utils/mockMachine";
 
 export interface StepperProps {
   onFinish: () => void;
@@ -37,12 +39,15 @@ const StepperRenderer: React.FC<StepperRendererProps> = ({
   return <CurrentStepComponent actor={actor} onFinish={onFinish} />;
 };
 
-let StepperActor = createActor(stepperMachine);
+const DEBUG_MODE = false;
+const machine = DEBUG_MODE ? stepperMachine : generateStateMachine(MockConfig);
+
+let StepperActor = createActor(machine);
 StepperActor.start();
 
 const startNewActor = () => {
   StepperActor.stop();
-  StepperActor = createActor(stepperMachine);
+  StepperActor = createActor(machine);
   StepperActor.start();
 };
 
