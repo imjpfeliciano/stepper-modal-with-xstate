@@ -5,10 +5,16 @@ interface StepOneProps {
   actor: Actor<any>;
 }
 
+// send -> callback
+// state -> lo podemos obtener desde el contexto del actor
+// el contexto decide que paso vamos, y del total, dependiendo de la data que tenga guardada
+// si el form ya tiene data y navegamos para atras y delante, debemos mantener el estado
 const StepOne: React.FC<StepOneProps> = ({ actor }) => {
   const handleClick = (event: string) => {
+    // if (actor.getSnapshot().value === "quit_confirmation") {
+    // }
     console.log({ event });
-    actor.send({ type: event });
+    actor.send({ type: event }); // a donde redireccionamos?
   };
   console.log({ actor });
   return (

@@ -16,15 +16,8 @@ const StepConfig = {
     },
     [NavigationSteps.SECOND_STEP]: {
       back: NavigationSteps.INITIAL_STEP,
-      next: NavigationSteps.SUCCESS_STEP,
+      next: NavigationSteps.FINISH,
       close: NavigationSteps.QUIT_CONFIRMATION_STEP,
-    },
-    [NavigationSteps.SUCCESS_STEP]: {
-      next: NavigationSteps.FINISH, // Got it button
-      close: NavigationSteps.FINISH, // Close button
-    },
-    [NavigationSteps.QUIT_CONFIRMATION_STEP]: {
-      next: NavigationSteps.FINISH, // Yes button
     },
   },
 };
@@ -38,6 +31,8 @@ const stepMap = {
   [NavigationSteps.FINISH]: (props) => <SuccessState {...props} />,
 };
 
+// Replace finish state with modal open, closed
+// if state from xstate context is closed, then show the button, else show the modal
 function App() {
   const [showModal, setShowModal] = React.useState(false);
 

@@ -1,7 +1,10 @@
 export enum NavigationSteps {
   INITIAL_STEP = "step_one",
   SECOND_STEP = "step_two",
-  SUCCESS_STEP = "success",
+  INTERMEDIATE = "intermediate",
+  // SUCCESS_STEP = "success",
+  //
+  // Required -> QUIT_CONFIRMATION_STEP, FINISH
   QUIT_CONFIRMATION_STEP = "quit_confirmation",
   FINISH = "finish",
 }
@@ -15,13 +18,13 @@ export const StepConfig = {
     },
     [NavigationSteps.SECOND_STEP]: {
       back: NavigationSteps.INITIAL_STEP, // back button
-      next: NavigationSteps.SUCCESS_STEP,
+      // next: NavigationSteps.SUCCESS_STEP,
       cancel: NavigationSteps.QUIT_CONFIRMATION_STEP, // close button
     },
-    [NavigationSteps.SUCCESS_STEP]: {
-      next: NavigationSteps.FINISH, // Got it button
-      cancel: NavigationSteps.FINISH, // Close button
-    },
+    // [NavigationSteps.SUCCESS_STEP]: {
+    //   next: NavigationSteps.FINISH, // Got it button
+    //   cancel: NavigationSteps.FINISH, // Close button
+    // },
     [NavigationSteps.QUIT_CONFIRMATION_STEP]: {
       next: NavigationSteps.FINISH, // Yes button
     },

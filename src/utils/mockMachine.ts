@@ -2,7 +2,7 @@ import { createMachine, assign } from "xstate";
 import { NavigationSteps } from "../constants/navigationConfig";
 
 export const stepperMachine = createMachine({
-  /** @xstate-layout N4IgpgJg5mDOIC5SwC5gA7rAJwHSowH0B7AOzAGJyAPFAbQAYBdRUdY2ASxU7NZGqIAjAA4A7LgBMANgYAWIZICskgJyqAzCNUAaEAE9EksXNxKlWxRqEalc1ZIC+jvQUw58adCXIUAxgA2HGCMLEgg7Fw8fOGCCKISMvKKKupaugaIIkK4GpJqNvYiSkJy1s6uXlh4boQoAO7EVGC0ofyR3Lyk-HFlGrhychYMDNZi0iKjeoYIGtKqZqKSQkpiItZyYmJKFSBu1Z5EDU2BwW3hHdHdsYh9A0MaI2MTU5kIxqYyjzbFmuulu32HlqxwoACMAIZ+ADW5zYHE6MVAcUkIzMkzEkjk2REy1xcmmRixuBMNkUqlKSmkX0BVQ8AEcAK7cQh+MgAM042AAthCrhROaROLAABZwiIIq49LIqXCqJTyXElSSPESE97GKTqTZJCzykTSWkYA5Mlls0icnl8rr+CGkPxgALiy5daUIOTSJRmTRiDS+hjSeabdUKBYaR5iFZLQrGI3uPCmlCsjlc3n8vx2h1OoRheFRV03d3h+7DUZCcaTDTq-KmIYMEqDWQaVSBpy7UjECBwfhA7DtSUF5GIAC00nVo9wIyn05nYjjB1qZDA-fzSIEt0k6qE5ZJKiUqmyYlGB6EhpcezpNS8dUaK8R1yH7wPuHLomkg232Ns1bycpEZQmMRVF9ClcXnBlmSTc1LTTQcJVXB91wQaRI3uEY1iUYpHjHN58gkD0GE0FYgO0NQz0qY0PEFYURTvKVC3lL0IyxI81CVMQf36ERJlRU9uM9EwdmcRwgA */
+  /** @xstate-layout N4IgpgJg5mDOIC5SwC5gA7rAJwHSowH0B7AOzAGJyAPFAbQAYBdRUdY2ASxU7NZGqIAtAGYAjACZcADjFiAnAFYALPIaLFEsQHYANCACeiBYtwSJ42QDZxkicqsBfR-oKYc+NOhLkKAYwAbDjBGFiQQdi4ePnDBBFFJGTklVXVNHX0jBDFceXlzaQlrBmltRSsrbWdXLyw8N0IUAHdiKjBaUP5I7l5SfjihCtwrCW0GSrltbWkGEUzECTVcMVLFaUUxBgZtLWqQNzrPImbWwODO8O7ovtjhIZGxiZ1p2fns+WVckQtpcW0rJRWZR7A4eBonCgAIwAhn4ANYXNgcHoxUADRbyXCqMRAiRWHT2CyKN5iZSmZSbKyFCxaERraQg2oeACOAFduIQ-GQAGacbAAW2h1wovNInFgAAtERFkdd+og6VJSrIxIptlTlNplCTNbkqdIKflFgDJIyMIc2RyuaReQKhb1-NDSH4wAFpVdevL4iJPprpDYGJJSlY1lY3j6GLgtlsDap5GMyooze48JaUJyeXzBcK-E6XW6xGEkVFPbd4vdRuNtJMXnNDMYycsFNJflNtPIAaVnC4QKRiBA4PxQdgurLS2jhGqrFGdiJKso6Q5xm8hOsZ4H5CtCjNlKNk4cGmQwKOS6iBMIydIZxZ54urMv6wgRFfdwp56V46TVfuwV5Gi0TxRG4J3iCRA1yLY1REBgLHjMZpBJRQRGGJDtGfORVBDEof1Tdl02tW1s3HGVT2A89smrXA5ymORSXkA0kIQx9SSvMRoOgkp4wcEYcNwUVxQlQC5TLMlTAsZQP0UD45w2RDPhUJRqy2EZoKqbsgA */
   id: "stepper",
   initial: "step_one",
   context: {
@@ -18,6 +18,7 @@ export const stepperMachine = createMachine({
         },
       },
     },
+
     step_two: {
       on: {
         next: "finish",
@@ -28,6 +29,7 @@ export const stepperMachine = createMachine({
         back: "step_one",
       },
     },
+
     quit_confirmation: {
       on: {
         finish: "finish",
@@ -51,6 +53,7 @@ export const stepperMachine = createMachine({
         ],
       },
     },
+
     finish: {
       type: "final",
     },
